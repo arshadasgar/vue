@@ -12,12 +12,21 @@
         <h1>{{message}}</h1>
         <label>The H1 is a 2 way data:</label><input type="text" v-model="message"><br>
         <span v-bind:title="hoverText" v-if="isVisible">Hover me</span>
-        <ol>
-            <li v-for="item in items">{{item.text}}</li>
-        </ol>
-        <button v-on:click="addSampleItems">Add samples to list</button>
+        <div>
+            <button v-on:click="addSampleItems">Add samples to list</button>
+            <ol>
+                <!-- <li v-for="item in items">{{ item.text }}</li> -->
+                <sample-list v-for="item in items" v-bind:listitem="item" v-bind:key="item.id"></sample-list>
+            </ol>
+        </div>
     </div>
     <script>
+        
+        Vue.component('sample-list', {
+            props: ['listitem'],
+            template: '<li>{{ listitem.text }}</li>'
+        });
+
         var app = new Vue({
             el: '#app',
             data: {
@@ -25,9 +34,9 @@
                 hoverText: 'This is the text when hovered',
                 isVisible: true,
                 items: [
-                    { text: 'First item' },
-                    { text: 'Second item' },
-                    { text: 'Third item' }
+                    { id: 1, text: 'First item' },
+                    { id: 2, text: 'Second item' },
+                    { id: 3, text: 'Third item' }
                 ]
             },
             methods: {
@@ -36,6 +45,7 @@
                 }
             }
         });
+
     </script>
 </body>
 </html>
