@@ -11,12 +11,13 @@
     <div id="app">
         <h1>{{message}}</h1>
         <label>The H1 is a 2 way data:</label><input type="text" v-model="message"><br>
-        <span v-bind:title="hoverText" v-if="isVisible">Hover me</span>
+        <i>Date via computed method: </i><b>{{dateNow}}</b><br>
+        <span title="hoverText" v-if="isVisible">Hover me</span>
         <div>
-            <button v-on:click="addSampleItems">Add samples to list</button>
+            <button @click="addSampleItems" :disabled="isDisabled">Add samples to list</button>
             <ol>
                 <!-- <li v-for="item in items">{{ item.text }}</li> -->
-                <sample-list v-for="item in items" v-bind:listitem="item" v-bind:key="item.id"></sample-list>
+                <sample-list v-for="item in items" :listitem="item":key="item.id"></sample-list>
             </ol>
         </div>
     </div>
@@ -37,11 +38,17 @@
                     { id: 1, text: 'First item' },
                     { id: 2, text: 'Second item' },
                     { id: 3, text: 'Third item' }
-                ]
+                ],
+                isDisabled: false
             },
             methods: {
                 addSampleItems: function() {
                     this.items.push({text: 'Something'});
+                }
+            },
+            computed: {
+                dateNow: function() {
+                    return Date.now();
                 }
             }
         });
