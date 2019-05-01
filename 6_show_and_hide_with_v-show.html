@@ -22,7 +22,13 @@
         <!-- Just to show the value of 'isVisible' -->
         <b>Current value of 'isVisible': </b> {{isVisible}}
 
-        <!-- You can show/hide a div itself -->
+        <!-- 
+            You can show/hide an element with the v-show directive.
+            The difference between v-if & v-show is that, 
+            v-show renders the element to DOM and toggles it with CSS properties whereas
+            v-if ensures that event listeners and child components inside the conditional block are properly destroyed
+            and re-created during toggles
+        -->
         <div v-show="isVisible">
             <p>Some paragraph</p>
             <span>Something else</span>
