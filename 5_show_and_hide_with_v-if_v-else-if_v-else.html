@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        #app div {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <!-- Try changing the value of 'type' by typing 'app.type = "B"' in browser's console -->
+        <i>Try changing the value of 'app.type' to 'A', 'B', 'C', or anything else in the console</i><br><br>
+        <!-- Just to show the value of 'type' -->
+        <b>Current value of 'type': </b> {{ type }}
+
+        <div v-if="type === 'A'">
+            A
+        </div>
+        <div v-else-if="type === 'B'">
+            B
+        </div>
+        <div v-else-if="type === 'C'">
+            C
+        </div>
+        <div v-else>
+            I am visible because the value of 'type' is not 'A' or 'B' or 'C'
+        </div>
+
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                type: 'A'
+            }
+        });
+    </script>
+
+</body>
+
+</html>

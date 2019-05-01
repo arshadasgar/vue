@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        #app div {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        
+        <!-- Try changing the value of 'isVisible' by typing 'app.isVisible = true' in browser's console -->
+        <i>Try changing the value of 'app.isVisible = true' in console</i><br><br>
+        <!-- Just to show the value of 'isVisible' -->
+        <b>Current value of 'isVisible': </b> {{isVisible}}
+        
+        <!-- You can show/hide an element -->
+        <p v-if="isVisible">I am visible only if 'isVisible' is true</p>
+        
+        <!-- You can show/hide a div itself -->
+        <div v-if="isVisible">
+            <p>Some paragraph</p>
+            <span>Something else</span>
+        </div>
+
+        <!-- 
+        Or if you want to show/hide multiple elements that cannot be contained inside a div, 
+        for example list items, you can use the 'template' element with v-if.
+        The 'template' element is a part of HTML5. Please refer the official docs for more info. 
+        -->
+        <div>
+            <ul>
+                <li>List item</li>
+                <li>List item</li>
+                <template v-if="isVisible">
+                    <li>List item which is invisible</li>
+                    <li>List item which is invisible</li>
+                </template>
+            </ul>
+        </div>
+
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                isVisible: false
+            }
+        });
+    </script>
+
+</body>
+
+</html>

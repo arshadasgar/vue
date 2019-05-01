@@ -16,35 +16,20 @@
 
 <body>
     <div id="app">
-        
-        <!-- Just to show the value of 'isVisible' -->
+
         <!-- Try changing the value of 'isVisible' by typing 'app.isVisible = true' in browser's console -->
         <i>Try changing the value of 'app.isVisible = true' in console</i><br><br>
+        <!-- Just to show the value of 'isVisible' -->
         <b>Current value of 'isVisible': </b> {{isVisible}}
-        
-        <!-- You can show/hide an element -->
-        <p v-if="isVisible">I am visible only if 'isVisible' is true</p>
-        
+
         <!-- You can show/hide a div itself -->
         <div v-if="isVisible">
-            <p>Some paragraph</p>
-            <span>Something else</span>
+            <p>I am inside the v-if</p>
+            <span>Me too</span>
         </div>
-
-        <!-- 
-        Or if you want to show/hide multiple elements that cannot be contained inside a div, 
-        for example list items, you can use the 'template' element with v-if.
-        The 'template' element is a part of HTML5. Please refer the official docs for more info. 
-        -->
-        <div>
-            <ul>
-                <li>List item</li>
-                <li>List item</li>
-                <template v-if="isVisible">
-                    <li>List item which is invisible</li>
-                    <li>List item which is invisible</li>
-                </template>
-            </ul>
+        <div v-else>
+            <p>Some paragraph inside the v-else</p>
+            <span>Something else inside the v-else</span>
         </div>
 
     </div>
