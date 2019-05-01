@@ -11,20 +11,26 @@
 
 <body>
     <div id="app">
-        <h1>{{ title }}</h1>
-        <p>{{ description }}</p>
+        <!-- 
+            Bind an attribute 'title' with 'v-bind' .
+            Try hovering the h1 in browser to see the result
+        -->
+        <h1 v-bind:title="hoverText">{{ title }}</h1>
+        <!-- Shortcut to do the same => ':attribute_name' -->
+        <p :title="hoverText">{{ description }}</p>
     </div>
-    
+
     <script>
-        // Create a new instance of Vue
+        // Create a new instance of Vue => new Vue();
         // and pass an object to tell Vue about 
         // 1. the element(and everything inside it) that we want Vue to take care of
-        // 2. the data that we want to pass to the HTML
+        // 2. the data that we want
         var app = new Vue({
             el: '#app', // div with id "app"
             data: {
                 title: 'Hello World',
-                description: 'Some lorem ipsum text that you want here'
+                description: 'Some lorem ipsum text that you want here',
+                hoverText: 'I appear on hover'
             }
         });
     </script>
