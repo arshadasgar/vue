@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,24 +8,31 @@
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
+
 <body>
     <div id="app">
-        <h1>{{message}}</h1>
-        <label>The H1 is a 2 way data:</label><input type="text" v-model="message"><br>
-        <i>Date via computed method: </i><b>{{dateNow}}</b><br>
-        <span title="hoverText" v-if="isVisible">Hover me</span>
         <div>
-            <button @click="addSampleItems" :disabled="isDisabled">Add samples to list</button>
-            <ol>
-                <sample-list v-for="item in items" :text="item.text" :id="item.id" :key="item.id"></sample-list>
-            </ol>
+            <h1>{{message}}</h1>
+            <label>The H1 is a 2 way data:</label><input type="text" v-model="message"><br>
+            <i>Date via computed method: </i><b>{{dateNow}}</b><br>
+            <span title="hoverText" v-if="isVisible">Hover me</span>
+            <div>
+                <button @click="addSampleItems" :disabled="isDisabled">Add samples to list</button>
+                <ol>
+                    <sample-list v-for="item in items" :text="item.text" :key="item.id"></sample-list>
+                </ol>
+            </div>
         </div>
     </div>
     <script>
-        
         Vue.component('sample-list', {
-            props: ['text', 'id'],
-            template: '<li>ID: {{ id }} - TEXT: {{ text }}</li>'
+            data: function() {
+                return { 
+                    ownText: "Inside" 
+                }
+            },
+            props: ['text'],
+            template: '<li>From parent: {{ text }} - From within component: {{ ownText }}</li>'
         });
 
         var app = new Vue({
@@ -33,25 +41,35 @@
                 message: 'Hi Vue of Arshad',
                 hoverText: 'This is the text when hovered',
                 isVisible: true,
-                items: [
-                    { id: 1, text: 'First item' },
-                    { id: 2, text: 'Second item' },
-                    { id: 3, text: 'Third item' }
+                items: [{
+                        id: 1,
+                        text: 'First item'
+                    },
+                    {
+                        id: 2,
+                        text: 'Second item'
+                    },
+                    {
+                        id: 3,
+                        text: 'Third item'
+                    }
                 ],
                 isDisabled: false
             },
             methods: {
-                addSampleItems: function() {
-                    this.items.push({text: 'Something'});
+                addSampleItems: function () {
+                    this.items.push({
+                        text: 'Something'
+                    });
                 }
             },
             computed: {
-                dateNow: function() {
+                dateNow: function () {
                     return Date.now();
                 }
             }
         });
-
     </script>
 </body>
+
 </html>
