@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- Just to show the value of 'isVisible' -->
+        <label>Current value of 'isVisible': </label> {{isVisible}}
+        <!-- Try changing the value of 'isVisible' by typing 'app.isVisible = true' in browser's console -->
+        <p v-if="isVisible">You can't see me until the 'isVisible' is true</p>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                title: 'Hello World',
+                description: 'Some lorem ipsum text that you want here',
+                hoverText: 'I appear on hover',
+                isVisible: false
+            }
+        });
+    </script>
+
+</body>
+
+</html>
