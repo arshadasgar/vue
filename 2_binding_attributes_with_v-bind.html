@@ -17,11 +17,12 @@
 <body>
     <div id="app">
         <!-- 
-            Bind an attribute 'title', 'href' etc. with 'v-bind' directive. Directives are prefixed with 'v'.
-            Try hovering the h1 in browser to see the result
+            Bind an attribute 'title', 'href' etc. with 'v-bind' directive.
         -->
         <div>
+            <!-- Try hovering the h1 -->
             <p v-bind:title="hoverText">Hover me</p>
+            <!-- Inspect the 'a' tag and see the href attribute -->
             <a v-bind:href="link">Example link</a>
         </div>
 
