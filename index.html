@@ -16,16 +16,15 @@
         <div>
             <button @click="addSampleItems" :disabled="isDisabled">Add samples to list</button>
             <ol>
-                <!-- <li v-for="item in items">{{ item.text }}</li> -->
-                <sample-list v-for="item in items" :listitem="item":key="item.id"></sample-list>
+                <sample-list v-for="item in items" :text="item.text" :id="item.id" :key="item.id"></sample-list>
             </ol>
         </div>
     </div>
     <script>
         
         Vue.component('sample-list', {
-            props: ['listitem'],
-            template: '<li>{{ listitem.text }}</li>'
+            props: ['text', 'id'],
+            template: '<li>ID: {{ id }} - TEXT: {{ text }}</li>'
         });
 
         var app = new Vue({
