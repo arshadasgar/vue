@@ -44,7 +44,7 @@
             <!-- 2 -->
             <!-- 
                 If we want to pass something else to the method, 
-                we should use $event & pass it to make the event available in the method
+                we should use $event & pass it along with other parameters(like a string in this example) to make the event available in the method
             -->
             <button v-on:click="consoleEventByPassingEvent('some message', $event)">Click me & see the console</button>
         </div>
