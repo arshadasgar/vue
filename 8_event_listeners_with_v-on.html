@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        #app div {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- Use 'v-on' directive to listen for an event like 'click', 'submit' etc. -->
+        <div>
+            <!-- Show an alert on click event -->
+            <button v-on:click="showAlert">Click me to show an alert</button>
+        </div>
+        <div>
+            <!-- Shortcut to do the same => Use '@' instead of 'v-on:' -->
+            <!-- Small logics can be written directly instead of calling a method -->
+            <label>Click the button</label>
+            <button @click="counter=counter+1">Clicked {{ counter }} times</button>
+        </div>
+        <div>
+            <!-- Change the message property on click event -->
+            <b>{{ message }}</b> - <button v-on:click="changeMessage">Change message</button>
+        </div>
+        <div>
+            <!-- We can pass parameters to the function -->
+            <button v-on:click="greet('hi')">Greet hi</button>
+            <button v-on:click="greet('hello')">Greet hello</button>
+        </div>
+        <div>
+            <!-- In some cases we might need the native DOM event  -->
+            <!-- There are 2 ways we can access the event inside the method -->
+            <!-- 1 -->
+            <button v-on:click="consoleEventWithoutPassingAnything">Click me & see the console</button>
+            <!-- 2 -->
+            <!-- 
+                If we want to pass something else to the method, 
+                we should use $event & pass it to make the event available in the method
+            -->
+            <button v-on:click="consoleEventByPassingEvent('some message', $event)">Click me & see the console</button>
+        </div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Example message',
+                counter: 0
+            },
+            // Use a 'methods' object to define methods
+            methods: {
+                showAlert: function () {
+                    alert('Example alert message')
+                },
+                changeMessage: function () {
+                    // The message property can be accessed with 'this' keyword
+                    this.message = 'This is the new example messsage'
+                },
+                greet: function (msg) {
+                    alert(msg)
+                },
+                consoleEventWithoutPassingAnything: function(event) {
+                    // Check the console to see the event
+                    console.log(event)
+                },
+                consoleEventByPassingEvent(msg, event) {
+                    // Check the console to see the message and event
+                    console.log(msg)
+                    console.log(event)
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
