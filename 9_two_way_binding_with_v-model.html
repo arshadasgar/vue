@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.2.6.10.js"></script>
+    <style>
+        #app div {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- Use 'v-model' directive to achieve 2-way data binding between a form input and app state -->
+        <!-- 
+            Whenever the input changes, the 'message' gets updated 
+            and whenever 'message' is changed, the input's value also gets updated 
+        -->
+        <div>
+            <h1>{{ message }}</h1>
+            <label>Try changing this text: </label>
+            <input type="text" v-model="message" />
+        </div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Example message'
+            }
+        });
+    </script>
+
+</body>
+
+</html>

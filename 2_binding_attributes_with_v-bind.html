@@ -11,7 +11,7 @@
             margin-top: 40px;
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="vue.2.6.10.js"></script>
 </head>
 
 <body>
@@ -24,12 +24,16 @@
             <p v-bind:title="hoverText">Hover me</p>
             <!-- Inspect the 'a' tag and see the href attribute -->
             <a v-bind:href="link">Example link</a>
+            <!-- Attributes can be dynamically added to an element using '[]' with the v-bind directive -->
+            <a v-bind:[dynamic_attribute]="link">Example link with dynamic attribute</a>
         </div>
 
         <!-- Shortcut to do the same => ':attribute_name' -->
         <div>
             <p :title="hoverText">Hover me</p>
             <a :href="link">Example link</a>
+            <!-- Dynamic attributes will work with shortcut too -->
+            <a :[dynamic_attribute]="link">Example link dynamic attribute</a>
         </div>
     </div>
 
@@ -38,7 +42,8 @@
             el: '#app',
             data: {
                 hoverText: 'I appear on hover',
-                link: 'https://www.youtube.com/channel/UCFfUusJRDkyRQqMBOpJ05cg'
+                link: 'https://www.youtube.com/channel/UCFfUusJRDkyRQqMBOpJ05cg',
+                dynamic_attribute: 'href'
             }
         });
     </script>

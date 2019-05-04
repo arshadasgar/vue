@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="vue.2.6.10.js"></script>
 </head>
 
 <body>
@@ -17,12 +17,15 @@
     </div>
     
     <script>
+        // Every Vue application starts by creating a new Vue instance with the Vue function => Vue()
         // Create a new instance of Vue => new Vue();
-        // and pass an object to tell Vue about 
+        // and pass an object, which is the options object, to tell Vue about
         // 1. el - the element(and everything inside it) that we want Vue to take care of
-        // 2. data - the data that we want
+        // 2. data - the data that we want 
+        // etc.
+        // Learn more about the options data here - https://vuejs.org/v2/api/#Options-Data
         var app = new Vue({
-            el: '#app', // div with id "app"
+            el: '#app', // element with id "app"
             data: {
                 title: 'Hello World',
                 description: 'Some lorem ipsum text that you want here'

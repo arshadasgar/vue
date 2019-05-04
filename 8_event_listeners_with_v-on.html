@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="vue.2.6.10.js"></script>
     <style>
         #app div {
             margin-top: 40px;
@@ -20,12 +20,16 @@
         <div>
             <!-- Show an alert on click event -->
             <button v-on:click="showAlert">Click me to show an alert</button>
+            <!-- Events can be dynamically added to an element using '[]' with the v-on directive -->
+            <button v-on:[dynamic_event]="showAlert">Click me to show an alert</button>
         </div>
         <div>
             <!-- Shortcut to do the same => Use '@' instead of 'v-on:' -->
             <!-- Small logics can be written directly instead of calling a method -->
             <label>Click the button</label>
             <button @click="counter=counter+1">Clicked {{ counter }} times</button>
+            <!-- Dynamic events will work with the shortcut too -->
+            <button @[dynamic_event]="counter=counter+1">Clicked {{ counter }} times</button>
         </div>
         <div>
             <!-- Change the message property on click event -->
@@ -45,6 +49,7 @@
             <!-- 
                 If we want to pass something else to the method, 
                 we should use $event & pass it along with other parameters(like a string in this example) to make the event available in the method
+                If there is nothing to pass, then the event will be available without passing as a parameter like in the example above
             -->
             <button v-on:click="consoleEventByPassingEvent('some message', $event)">Click me & see the console</button>
         </div>
@@ -55,7 +60,8 @@
             el: '#app',
             data: {
                 message: 'Example message',
-                counter: 0
+                counter: 0,
+                dynamic_event: 'click'
             },
             // Use a 'methods' object to define methods
             methods: {
