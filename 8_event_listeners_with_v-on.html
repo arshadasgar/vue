@@ -33,7 +33,7 @@
         </div>
         <div>
             <!-- Change the message property on click event -->
-            <b>{{ message }}</b> - <button v-on:click="changeMessage">Change message</button>
+            <button v-on:click="changeMessage">Change message</button> - <b>{{ message }}</b>
         </div>
         <div>
             <!-- We can pass parameters to the function -->
@@ -44,14 +44,14 @@
             <!-- In some cases we might need the native DOM event  -->
             <!-- There are 2 ways we can access the event inside the method -->
             <!-- 1 -->
-            <button v-on:click="consoleEventWithoutPassingAnything">Click me & see the console</button>
+            <button v-on:click="accessEventWithoutPassingAnything">Click me & see the console</button>
             <!-- 2 -->
             <!-- 
-                If we want to pass something else to the method, 
-                we should use $event & pass it along with other parameters(like a string in this example) to make the event available in the method
+                If we want to pass something to the method(like a string in this example),
+                we should use $event & pass it along with other parameters to make the event available in the method
                 If there is nothing to pass, then the event will be available without passing as a parameter like in the example above
             -->
-            <button v-on:click="consoleEventByPassingEvent('some message', $event)">Click me & see the console</button>
+            <button v-on:click="accessEventByPassingEvent('some message', $event)">Click me & see the console</button>
         </div>
     </div>
 
@@ -75,11 +75,11 @@
                 greet: function (msg) {
                     alert(msg)
                 },
-                consoleEventWithoutPassingAnything: function(event) {
+                accessEventWithoutPassingAnything: function(event) {
                     // Check the console to see the event
                     console.log(event)
                 },
-                consoleEventByPassingEvent(msg, event) {
+                accessEventByPassingEvent(msg, event) {
                     // Check the console to see the message and event
                     console.log(msg)
                     console.log(event)

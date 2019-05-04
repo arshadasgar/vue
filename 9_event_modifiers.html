@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.2.6.10.js"></script>
+    <style>
+        #app div {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <!-- An event modifier like 'prevent' or 'stop' etc. can be used with the directive 'v-on' -->
+
+            <!-- 
+                In this example, a tag's default behaviour is prevented using the modifier 'prevent',
+                which is the equivalent of preventDefault() 
+            -->
+            <a href="http://www.google.com" v-on:click.prevent>Go to google - No you can't</a>
+            <br>
+            <!-- We could just prevent and do nothing or we can call a method -->
+            <a href="http://www.google.com" v-on:click.prevent="showAlert">Go to google - No you can't</a>
+        </div>
+
+        <div>
+            <!-- Modifiers can be chained -->
+            <div v-on:click="sayHi">
+                <!-- Stop the propagation so that the click event of div won't work, but go to the link -->
+                <a href="http://www.google.com" v-on:click.stop>Just stop the propogation but go to link</a>
+                <br>
+                <!-- Prevent the default behaviour of a tag and stop the propagation too -->
+                <a href="http://www.google.com" v-on:click.prevent.stop>Prevent and stop</a>
+                <br>
+                <a href="http://www.google.com" v-on:click.prevent="showAlert">Prevent but don't stop propagation</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            methods: {
+                showAlert: function () {
+                    alert('Link clicked')
+                },
+                sayHi: function () {
+                    alert('Clicked on div too')
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
