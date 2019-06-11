@@ -22,17 +22,76 @@
             and whenever 'message' is changed, the input's value also gets updated 
         -->
         <div>
-            <h1>{{ message }}</h1>
+            <h3>{{ message }}</h3>
             <label>Try changing this text: </label>
             <input type="text" v-model="message" />
         </div>
+        <!-- Textarea example -->
+        <!-- Make sure the textarea has the v-model directive. 
+            Don't use "<textarea>{{ model }}</textarea>" by mistake -->
+        <div>
+            <h3>{{ textareaMessage }}</h3>
+            <label>Try changing this text: </label>
+            <textarea v-model="textareaMessage"></textarea>
+        </div>
+
+        <!-- Other examples -->
+
+        <div>
+            <h3>{{ checked }}</h3>
+            <label>Check and uncheck the checkbox: </label>
+            <input type="checkbox" v-model="checked">
+        </div>
+
+        <div>
+            <h3>{{ checkedNames }}</h3>
+            <label>Check and uncheck the checkboxes: </label>
+            India<input type="checkbox" value="India" v-model="checkedNames">
+            USA<input type="checkbox" value="USA" v-model="checkedNames">
+            UK<input type="checkbox" value="UK" v-model="checkedNames">
+        </div>
+
+        <div>
+            <h3>{{ selectedRadio }}</h3>
+            <label>Select the radio: </label>
+            First<input type="radio" value="first" v-model="selectedRadio">
+            Second<input type="radio" value="second" v-model="selectedRadio">
+        </div>
+
+
+        <div>
+            <h3>{{ selectedSingleSelect }}</h3>
+            <select v-model="selectedSingleSelect">
+                <option value="">Select</option>
+                <option value="one">One</option>
+                <option value="two">Two</option>
+                <option value="three">Three</option>
+            </select>
+        </div>
+
+        <div>
+            <h3>{{ selectedMultiSelect }}</h3>
+            <select v-model="selectedMultiSelect" multiple>
+                <option value="">Select</option>
+                <option value="one">One</option>
+                <option value="two">Two</option>
+                <option value="three">Three</option>
+            </select>
+        </div>
+
     </div>
 
     <script>
         var app = new Vue({
             el: '#app',
             data: {
-                message: 'Example message'
+                message: 'Example message',
+                textareaMessage: '',
+                checked: false,
+                checkedNames: [],
+                selectedRadio: 'first',
+                selectedSingleSelect: '',
+                selectedMultiSelect: []
             }
         });
     </script>
