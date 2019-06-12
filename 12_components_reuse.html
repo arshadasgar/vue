@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="common_style.css" rel="stylesheet" />
+    <script src="vue.2.6.10.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2 class="title">Components - Reusing</h2>
+
+        <!-- We can reuse components anywhere we want -->
+        <click-counter></click-counter>
+        <click-counter></click-counter>
+
+        <div class="note">
+            <b>Notes:</b>
+            <p>You can see the count is different for all the button components even if the component is same.
+                That’s because each time you use a component, a new instance of it is created.
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        Vue.component('click-counter', {
+            // Note that data of a component is a function that returns an object,
+            // unlike the data of the new Vue instance
+            data: function () {
+                return {
+                    clicks: 0
+                }
+            },
+            template: `<button v-on:click="clicks++">Clicked {{ clicks }} times</button>`
+        });
+
+        var app = new Vue({
+            el: '#app'
+        });
+    </script>
+
+</body>
+
+</html>

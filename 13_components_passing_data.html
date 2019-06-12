@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="common_style.css" rel="stylesheet" />
+    <script src="vue.2.6.10.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2 class="title">Components - Passing data to components using 'props'</h2>
+        <div>
+            <!-- The 'prop' we have used for passing/binding the data is 'item'.
+                So the data binding is done to that 'item' ie. "v-bind:item" 
+            -->
+            <!-- 
+            In this example, we are using the component just to print the 'li'
+            So we pass each object of the array in a for loop 
+            -->
+            <ul>
+                <list-populator v-for="each_item in list_items" v-bind:item="each_item"></list-populator>
+            </ul>
+
+
+        </div>
+
+        <!-- We can pass multiple items to the props of a component -->
+        <post-block v-bind:title="title" v-bind:desc="description" v-bind:date="date"></post-block>
+
+        <!-- Or we can pass an object with all the data items -->
+        <another-post-block v-bind:postobject="postObj"></another-post-block>
+
+    </div>
+
+    <script>
+        Vue.component('list-populator', {
+            props: ['item'],
+            template: '<li>{{ item.name }}</li>'
+        });
+
+        Vue.component('post-block', {
+            props: ['title', 'desc', 'date'],
+            template: `
+                        <div>
+                            <h3>{{ title }}</h3>
+                            <p>{{ desc }}</p>   
+                            <p>Date: {{ date }}</p> 
+                        </div>
+                        `
+        });
+
+        Vue.component('another-post-block', {
+            props: ['postobject'],
+            template: `
+                        <div>
+                            <h3>{{ postobject.title }}</h3>
+                            <p>{{ postobject.description }}</p>   
+                            <p>Date: {{ postobject.date }}</p> 
+                        </div>
+                        `
+        });
+
+        var app = new Vue({
+            el: '#app',
+            data: { // This is the data that we are going to pass to the component 'list-populator'
+                list_items: [
+                    { id: 1, name: 'First item' },
+                    { id: 2, name: 'Second item' },
+                    { id: 3, name: 'Third item' },
+                    { id: 4, name: 'Fourth item' }
+                ],
+                title: 'Post title',
+                description: 'This is the description of the post',
+                date: new Date(),
+                postObj: {
+                    title: 'Another title of another post',
+                    description: 'And this is another description of another post',
+                    date: new Date()
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
