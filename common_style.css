@@ -1,0 +1,8 @@
+body {
+    background-color: #e0e0e0;
+    padding: 10px;
+    font-family: monospace;
+}
+#app div {
+    margin-top: 40px;
+}

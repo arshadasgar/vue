@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="common_style.css" rel="stylesheet" />
+    <script src="vue.2.6.10.js"></script>
+</head>
+
+<body>
+    <div id="app">
+            <h2>Ordered and unordered lists using multiple components</h2>
+            <!-- 
+                Components are reusable Vue instances with a name. 
+                We can use components as custom elements inside a root Vue instance created with "new Vue". 
+            -->
+            <ordered-list></ordered-list>
+            <unordered-list></unordered-list>
+
+    </div>
+
+    <script>
+        // A component can be created using the 'Vue.component' method that accepts a name and some properties
+        // In this example, name of the component is 'ordered-list'
+        // This component can be used inside the div with id 'app' like this '<ordered-list></ordered-list>'
+        Vue.component('ordered-list', {
+            template: `<ol>
+                            <li>First item</li>
+                            <li>Second item</li>
+                        </ol>`
+        });
+
+        Vue.component('unordered-list', {
+            template: `<ul>
+                            <li>First item</li>
+                            <li>Second item</li>
+                        </ul>`
+        })
+
+        var app = new Vue({
+            el: '#app'
+        });
+    </script>
+
+</body>
+
+</html>
