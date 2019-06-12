@@ -5,4 +5,11 @@ body {
 }
 #app div {
     margin-top: 40px;
+    box-shadow: 1px 3px 5px 0px #bfbfbf;
+    padding: 5px 10px;
+    background-color: white;
+}
+.title {
+    color: #2d2d2d;
+    text-decoration: underline;
 }

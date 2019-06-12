@@ -12,6 +12,7 @@
 
 <body>
     <div id="app">
+        <h2 class="title">Looping with v-for</h2>
         <!-- Use 'v-for' directive to loop through an Array and create multiple elements -->
         <ol>
             <li v-for="item in items">{{ item.text }}</li>
@@ -23,10 +24,10 @@
             el: '#app',
             data: {
                 items: [
-                     { text: 'Item 1' },
-                     { text: 'Item 2' },
-                     { text: 'Item 3' },
-                     { text: 'Item 4' }
+                    { text: 'Item 1' },
+                    { text: 'Item 2' },
+                    { text: 'Item 3' },
+                    { text: 'Item 4' }
                 ]
             }
         });
